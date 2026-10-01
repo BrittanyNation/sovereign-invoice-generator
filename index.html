@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Developer Invoice & Contract Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="app-header" role="banner">
+        <div class="header-content">
+            <h1>&lt;/&gt; Freelance Invoice &amp; Contract Engine</h1>
+            <p>Build, calculate, and deploy professional client agreements asynchronously.</p>
+        </div>
+    </header>
+
+    <main class="app-main" role="main">
+        <aside class="sidebar-inputs" aria-label="Invoice Configuration Controls">
+            <h2>Configuration Board</h2>
+            <form id="invoice-form" onsubmit="return false;">
+                
+                <div class="input-group">
+                    <label for="client-name">Client Name</label>
+                    <input type="text" id="client-name" placeholder="e.g., Acme Corporation" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="project-name">Project / Scope Title</label>
+                    <input type="text" id="project-name" placeholder="e.g., E-Commerce Email Suite Optimization" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="due-date">Payment Due Date</label>
+                    <input type="date" id="due-date" required>
+                </div>
+
+                <div class="milestone-section">
+                    <h3>Milestone Line Items</h3>
+                    <div id="milestone-rows"></div>
+                    <button type="button" id="add-item-btn" class="btn-secondary">+ Add Milestone Item</button>
+                </div>
+
+                <div class="input-group margin-top">
+                    <label for="discount-rate">Discount / Adjustment (%)</label>
+                    <input type="number" id="discount-rate" min="0" max="100" value="0">
+                </div>
+
+                <button type="button" id="print-btn" class="btn-primary">Generate &amp; Save PDF</button>
+            </form>
+        </aside>
+
+        <section class="document-preview" aria-label="Live Document Preview Ledger">
+            <div class="invoice-sheet" id="invoice-document">
+                <div class="sheet-header">
+                    <div class="meta-left">
+                        <div class="brand-logo">&lt;/&gt; CODECRAFT DYNAMICS</div>
+                        <p>100 Technology Corridor, Suite 500</p>
+                        <p>Clarksville, TN 37040</p>
+                    </div>
+                    <div class="meta-right">
+                        <h2>INVOICE &amp; AGREEMENT</h2>
+                        <p><strong>Date:</strong> <span id="current-date-lbl">--/--/----</span></p>
+                        <p><strong>Due:</strong> <span id="due-date-lbl">--/--/----</span></p>
+                    </div>
+                </div>
+
+                <div class="sheet-body">
+                    <div class="client-block">
+                        <h4>PREPARED FOR:</h4>
+                        <p id="client-name-lbl" class="preview-placeholder">Awaiting input details...</p>
+                    </div>
+
+                    <div class="scope-block">
+                        <h4>PROJECT SCOPE &amp; CHARGE CODES:</h4>
+                        <p id="project-name-lbl" class="preview-placeholder">Awaiting project parameters...</p>
+                    </div>
+
+                    <table class="ledger-table">
+                        <thead>
+                            <tr>
+                                <th align="left">Milestone Deliverable Description</th>
+                                <th align="right" width="120">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ledger-items-body"></tbody>
+                    </table>
+
+                    <div class="totals-block">
+                        <table align="right" class="totals-table">
+                            <tr>
+                                <td>Subtotal:</td>
+                                <td align="right" id="subtotal-lbl">$0.00</td>
+                            </tr>
+                            <tr>
+                                <td>Adjustment:</td>
+                                <td align="right" id="adjustment-lbl">-$0.00</td>
+                            </tr>
+                            <tr class="grand-total-row">
+                                <td>Grand Total:</td>
+                                <td align="right" id="grand-total-lbl">$0.00</td>
+                            </tr>
+                        </table>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+
+                <div class="sheet-footer">
+                    <p>This document constitutes a valid financial agreement. Balance tracking, ledger reconciliation, and electronic payments are processed securely under standard network parameters. Thank you for your business alignment.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
